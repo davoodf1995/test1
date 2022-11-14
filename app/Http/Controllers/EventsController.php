@@ -101,10 +101,11 @@ class EventsController extends BaseController
      */
 
     public function getEventsWithWorkshops() {
+        $workshop=Event::with('workshops')->get();
+        return response()->json($workshop);
         throw new \Exception('implement in coding task 1');
     }
-
-
+   
     /* TODO: complete getFutureEventWithWorkshops so that it returns events with workshops, that have not yet started
     Requirements:
     - only events that have not yet started should be included
@@ -179,6 +180,8 @@ class EventsController extends BaseController
      */
 
     public function getFutureEventsWithWorkshops() {
+        $workshop=Event::with('workshops')->where('events.updated_at','>',now())->get();
+        return response()->json($workshop);
         throw new \Exception('implement in coding task 2');
     }
 }
