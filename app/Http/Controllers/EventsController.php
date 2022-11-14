@@ -180,7 +180,7 @@ class EventsController extends BaseController
      */
 
     public function getFutureEventsWithWorkshops() {
-        $workshop=Event::with('workshops')->where('events.updated_at','>',now())->get();
+        $workshop=Event::with('workshopsFuture')->get();
         return response()->json($workshop);
         throw new \Exception('implement in coding task 2');
     }
